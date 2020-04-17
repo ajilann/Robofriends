@@ -12,15 +12,26 @@ import SearchBox from './SearchBox';
  				searchfields: ''
 			}
 	    }
+	    onSearchChange = (event) =>  {
+	   	//console.log(event.target.value); 
+	   	this.setState({searchfields: event.target.value})
+	   /*  const filteredRobots = this.state.robots.filter(robots =>{
+	   	return robots.name.toLowerCase().includes(this.state.searchfields.toLowerCase());*/
+	 // console.log(filteredRobots);
+	}
 
 	render() {
+		 const filteredRobots = this.state.robots.filter(robots =>{
+	   	return robots.name.toLowerCase().includes(this.state.searchfields.toLowerCase());
+	   })
 	return (
 	<div className='tc'>
 		<h1> RoboFriends </h1>
-		<SearchBox />
-		<CardList robots = {this.state.robots} />
+		<SearchBox searchChange = {this.onSearchChange}/>  
+		<CardList robots = {filteredRobots} />
 	</div>
 );
 }
-} 
+}
+
 export default App;
