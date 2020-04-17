@@ -4,6 +4,10 @@ import { robots } from './robots';
 
 const App = () => {
 	return (
-	<CardList robots = {robots} />
+	<div className='tc'>
+		<h1> RoboFriends </h1>
+		<input type='search' placeholder='search robots' />
+		<CardList robots = {robots} />
+	</div>
 );} 
 export default App;
