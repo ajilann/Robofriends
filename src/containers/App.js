@@ -33,15 +33,16 @@ import Scroll from '../components/Scroll'
 	}
 
 	render() {
+		const { searchfields , robots } = this.state;
+		 const filteredRobots = robots.filter(robot =>{
 		
-		 const filteredRobots = this.state.robots.filter(robots =>{
-	   	return robots.name.toLowerCase().includes(this.state.searchfields.toLowerCase());
+	   	return robot.name.toLowerCase().includes(searchfields.toLowerCase());
 	   })
-		 if (this.state.robots.length === 0){
-		 	return <h1>Loading </h1>
-		 }
-		 else {
-	return (
+		return !robots.length?
+		  <h1>Loading </h1> :
+		 
+		 (
+	 
 	<div className='tc'>
 		<h1 className= 'f1'> RoboFriends </h1>
 		<SearchBox searchChange = {this.onSearchChange}/>
@@ -50,7 +51,7 @@ import Scroll from '../components/Scroll'
 		</Scroll>
 	</div>
 );}
-}
+
 }
 
 export default App;
